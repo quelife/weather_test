@@ -1,0 +1,44 @@
+PODS:
+  - ActivityIndicatorManager (2.1.0)
+  - Alamofire (5.4.3)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - ActivityIndicatorManager
+  - Alamofire
+  - RxCocoa
+  - RxSwift
+  - SDWebImage
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - ActivityIndicatorManager
+    - Alamofire
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  ActivityIndicatorManager: 31087524844ff5a00ee95a905931b7420fdf3cc1
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: ec1a4f62966c99ae885de25b13d6a0e76a06e64c
+
+COCOAPODS: 1.11.2

@@ -1,0 +1,6 @@
+framework module ActivityIndicatorManager {
+  umbrella header "ActivityIndicatorManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
