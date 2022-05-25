@@ -7,6 +7,7 @@
 
 import Alamofire
 import SwiftyJSON
+import Foundation
 
 class AppAPI: NSObject {
     @discardableResult class func fetchCurrentWeather(type: RequestCurrentWeatherType, completion: APICompletion? ) -> APIRequest {
@@ -14,14 +15,14 @@ class AppAPI: NSObject {
         var urlString = ""
         switch type {
         case .cityName(let city, let unit):
-            urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=\(unit)"
+            urlString = "weather?q=\(city)&appid=\(apiKey)&units=\(unit)".encodeUrl() ?? ""
         case .coordinate(let latitude, let longitude, let unit):
-            urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=\(unit)"
+            urlString = "weather?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=\(unit)".encodeUrl() ?? ""
         }
         
         let request = APIRequest()
         
-        request.url = URL(string: urlString)!
+        request.url = API_URL(urlString)
         request.method = .get
         request.completion = completion
         
@@ -31,17 +32,32 @@ class AppAPI: NSObject {
     }
     
     @discardableResult class func fetchForecast5(cityName: String = "", unit: String = "", completion: APICompletion? ) -> APIRequest {
-        
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=\(apiKey)&units=\(unit)"
-        
+                
+        let encodeUrl = "forecast?q=\(cityName)&appid=\(apiKey)&units=\(unit)".encodeUrl()
         let request = APIRequest()
-        
-        request.url = URL(string: urlString)!
+        request.url = API_URL(encodeUrl ?? "")
         request.method = .get
         request.completion = completion
         
         request.request()
         
         return request
+    }
+}
+
+
+func API_URL(_ path: String) -> URL {
+    let url = "https://api.openweathermap.org/data/2.5/"
+    return URL(string: "\(url)\(path)")!
+}
+
+
+extension String {
+    func encodeUrl() -> String? {
+        return self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+    }
+    
+    func decodeUrl() -> String? {
+        return self.removingPercentEncoding
     }
 }
